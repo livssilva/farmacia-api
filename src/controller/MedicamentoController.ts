@@ -2,7 +2,7 @@ import type { MedicamentoDTO } from "../interface/MedicamentoDTO.js";
 import Medicamento from "../model/Medicamento.js";
 import type { Request, Response } from "express";
 
-class  MedicamentoController extends Medicamento {
+class MedicamentoController extends Medicamento {
 
     static async todos(req: Request, res: Response): Promise<Response> {
         try {
@@ -33,7 +33,5 @@ class  MedicamentoController extends Medicamento {
         }
     }
 }
-
-
 
 export default  MedicamentoController;
