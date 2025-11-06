@@ -3,7 +3,7 @@ import { DatabaseModel } from "./DatabaseModel.js";
 
 const database = new DatabaseModel().pool; 
 
-class Medicamentos {
+class Medicamento {
   private idMedicamento: number = 0;
   private nome: string;
   private fabricante: string;
@@ -73,9 +73,9 @@ class Medicamentos {
     this.preco = preco;
   }
   
-  static async listarMedicamento(): Promise<Array<Medicamentos> | null> {
+  static async listarMedicamento(): Promise<Array<Medicamento> | null> {
     try {
-      let listaDeMedicamentos: Array<Medicamentos> = [];
+      let listaDeMedicamentos: Array<Medicamento> = [];
 
       const querySelectMedicamento = `SELECT * FROM medicamentos;`;
 
@@ -83,7 +83,7 @@ class Medicamentos {
 
 
       respostaBD.rows.forEach((MedicamentosBD) => {
-        const novoMedicamento: Medicamentos = new Medicamentos(
+        const novoMedicamento: Medicamento = new Medicamento(
           MedicamentosBD.nome,
           MedicamentosBD.fabricante,
           MedicamentosBD.principio_ativo,
@@ -133,4 +133,4 @@ static async cadastrarMedicamento(Medicamentos: MedicamentoDTO): Promise<boolean
   }
 }
 
-export default Medicamentos;
+export default Medicamento;
