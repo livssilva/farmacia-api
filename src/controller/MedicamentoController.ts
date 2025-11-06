@@ -1,18 +1,12 @@
 import type { MedicamentoDTO } from "../interface/MedicamentoDTO.js";
-import Medicamentos from "../model/Medicamento.js";
+import Medicamento from "../model/Medicamento.js";
 import type { Request, Response } from "express";
 
-class  MedicamentosController extends Medicamentos {
+class  MedicamentoController extends Medicamento {
 
-    /**
-     * @param req Requisição do cliente
-     * @param res Resposta do servidor
-     * @returns (200) Lista de todos os clientes
-     * @returns (500) Erro na consulta
-     */
     static async todos(req: Request, res: Response): Promise<Response> {
         try {
-            const listarMedicamento: Array<Medicamentos> | null = await Medicamentos.listarMedicamento();
+            const listarMedicamento: Array<Medicamento> | null = await Medicamento.listarMedicamento();
 
             return res.status(200).json(listarMedicamento);
         } catch (error) {
@@ -25,7 +19,7 @@ class  MedicamentosController extends Medicamentos {
         try {
             const dadosRecebidosMedicamentos = req.body;
 
-            const respostaMedicamento = await Medicamentos.cadastrarMedicamento(dadosRecebidosMedicamentos);
+            const respostaMedicamento = await Medicamento.cadastrarMedicamento(dadosRecebidosMedicamentos);
 
             if (respostaMedicamento) {
                 return res.status(201).json({ mensagem: "Medicamento cadastrado com sucesso." });
@@ -42,4 +36,4 @@ class  MedicamentosController extends Medicamentos {
 
 
 
-export default  MedicamentosController;
+export default  MedicamentoController;
