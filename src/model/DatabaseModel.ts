@@ -29,11 +29,6 @@ export class DatabaseModel {
         this._client = new pg.Client(this._config);
     }
 
-    /**
-     * Método para testar a conexão com o banco de dados.
-     *
-     * @returns **true** caso a conexão tenha sido feita, **false** caso negativo
-     */
     public async testeConexao() {
         try {
             await this._client.connect();

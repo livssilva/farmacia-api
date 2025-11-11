@@ -1,7 +1,7 @@
 import { server } from "./server.js";
 import { DatabaseModel } from "./model/DatabaseModel.js";
 
-const port = 3333; // Define a porta onde o servidor irá escutar
+const port = 3333;
 
 new DatabaseModel().testeConexao().then((resbd) => {
     if (resbd) {
